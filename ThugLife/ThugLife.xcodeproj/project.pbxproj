@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A0CFB8D11E763C5200404ACC /* UIViewController+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = A0CFB8D01E763C5200404ACC /* UIViewController+Addition.m */; };
+		A0CFB8D61E763C5C00404ACC /* GHHPhotoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A0CFB8D31E763C5C00404ACC /* GHHPhotoManager.m */; };
+		A0CFB8D71E763C5C00404ACC /* GHHPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0CFB8D51E763C5C00404ACC /* GHHPhotoViewController.m */; };
+		A0CFB8DB1E764E2500404ACC /* GHHImageItem.m in Sources */ = {isa = PBXBuildFile; fileRef = A0CFB8DA1E764E2500404ACC /* GHHImageItem.m */; };
+		A0CFB8DE1E767CCB00404ACC /* GHHGridViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0CFB8DD1E767CCB00404ACC /* GHHGridViewController.m */; };
+		A0CFB8E11E767E7800404ACC /* UIView+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = A0CFB8E01E767E7800404ACC /* UIView+Addition.m */; };
+		A0CFB8E41E76990400404ACC /* GHHGridCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A0CFB8E31E76990400404ACC /* GHHGridCell.m */; };
 		A0E413721E76302F00851E99 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A0E413711E76302F00851E99 /* main.m */; };
 		A0E413751E76302F00851E99 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A0E413741E76302F00851E99 /* AppDelegate.m */; };
 		A0E413781E76302F00851E99 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0E413771E76302F00851E99 /* ViewController.m */; };
@@ -35,6 +42,21 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A0CFB8CF1E763C5200404ACC /* UIViewController+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Addition.h"; sourceTree = "<group>"; };
+		A0CFB8D01E763C5200404ACC /* UIViewController+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Addition.m"; sourceTree = "<group>"; };
+		A0CFB8D21E763C5C00404ACC /* GHHPhotoManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHHPhotoManager.h; sourceTree = "<group>"; };
+		A0CFB8D31E763C5C00404ACC /* GHHPhotoManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHHPhotoManager.m; sourceTree = "<group>"; };
+		A0CFB8D41E763C5C00404ACC /* GHHPhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHHPhotoViewController.h; sourceTree = "<group>"; };
+		A0CFB8D51E763C5C00404ACC /* GHHPhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHHPhotoViewController.m; sourceTree = "<group>"; };
+		A0CFB8D81E763C7500404ACC /* ThugLife.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ThugLife.pch; sourceTree = "<group>"; };
+		A0CFB8D91E764E2500404ACC /* GHHImageItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHHImageItem.h; sourceTree = "<group>"; };
+		A0CFB8DA1E764E2500404ACC /* GHHImageItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHHImageItem.m; sourceTree = "<group>"; };
+		A0CFB8DC1E767CCB00404ACC /* GHHGridViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHHGridViewController.h; sourceTree = "<group>"; };
+		A0CFB8DD1E767CCB00404ACC /* GHHGridViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHHGridViewController.m; sourceTree = "<group>"; };
+		A0CFB8DF1E767E7800404ACC /* UIView+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Addition.h"; sourceTree = "<group>"; };
+		A0CFB8E01E767E7800404ACC /* UIView+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Addition.m"; sourceTree = "<group>"; };
+		A0CFB8E21E76990400404ACC /* GHHGridCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHHGridCell.h; sourceTree = "<group>"; };
+		A0CFB8E31E76990400404ACC /* GHHGridCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHHGridCell.m; sourceTree = "<group>"; };
 		A0E4136D1E76302F00851E99 /* ThugLife.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ThugLife.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0E413711E76302F00851E99 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A0E413731E76302F00851E99 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -105,6 +127,20 @@
 				A0E413741E76302F00851E99 /* AppDelegate.m */,
 				A0E413761E76302F00851E99 /* ViewController.h */,
 				A0E413771E76302F00851E99 /* ViewController.m */,
+				A0CFB8CF1E763C5200404ACC /* UIViewController+Addition.h */,
+				A0CFB8D01E763C5200404ACC /* UIViewController+Addition.m */,
+				A0CFB8DF1E767E7800404ACC /* UIView+Addition.h */,
+				A0CFB8E01E767E7800404ACC /* UIView+Addition.m */,
+				A0CFB8D21E763C5C00404ACC /* GHHPhotoManager.h */,
+				A0CFB8D31E763C5C00404ACC /* GHHPhotoManager.m */,
+				A0CFB8D91E764E2500404ACC /* GHHImageItem.h */,
+				A0CFB8DA1E764E2500404ACC /* GHHImageItem.m */,
+				A0CFB8D41E763C5C00404ACC /* GHHPhotoViewController.h */,
+				A0CFB8D51E763C5C00404ACC /* GHHPhotoViewController.m */,
+				A0CFB8DC1E767CCB00404ACC /* GHHGridViewController.h */,
+				A0CFB8DD1E767CCB00404ACC /* GHHGridViewController.m */,
+				A0CFB8E21E76990400404ACC /* GHHGridCell.h */,
+				A0CFB8E31E76990400404ACC /* GHHGridCell.m */,
 				A0E413791E76302F00851E99 /* Main.storyboard */,
 				A0E4137C1E76302F00851E99 /* Assets.xcassets */,
 				A0E4137E1E76302F00851E99 /* LaunchScreen.storyboard */,
@@ -118,6 +154,7 @@
 			isa = PBXGroup;
 			children = (
 				A0E413711E76302F00851E99 /* main.m */,
+				A0CFB8D81E763C7500404ACC /* ThugLife.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -207,7 +244,7 @@
 				TargetAttributes = {
 					A0E4136C1E76302F00851E99 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = J95392EN9S;
+						DevelopmentTeam = 26676U96B8;
 						ProvisioningStyle = Automatic;
 					};
 					A0E413851E76302F00851E99 = {
@@ -277,8 +314,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				A0E413781E76302F00851E99 /* ViewController.m in Sources */,
+				A0CFB8D71E763C5C00404ACC /* GHHPhotoViewController.m in Sources */,
 				A0E413751E76302F00851E99 /* AppDelegate.m in Sources */,
+				A0CFB8D11E763C5200404ACC /* UIViewController+Addition.m in Sources */,
+				A0CFB8DB1E764E2500404ACC /* GHHImageItem.m in Sources */,
+				A0CFB8E41E76990400404ACC /* GHHGridCell.m in Sources */,
+				A0CFB8E11E767E7800404ACC /* UIView+Addition.m in Sources */,
 				A0E413721E76302F00851E99 /* main.m in Sources */,
+				A0CFB8DE1E767CCB00404ACC /* GHHGridViewController.m in Sources */,
+				A0CFB8D61E763C5C00404ACC /* GHHPhotoManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -427,8 +471,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = J95392EN9S;
+				DEVELOPMENT_TEAM = 26676U96B8;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/ThugLife/ThugLife.pch";
 				INFOPLIST_FILE = ThugLife/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.gaohaohao.ThugLife;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -439,8 +486,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = J95392EN9S;
+				DEVELOPMENT_TEAM = 26676U96B8;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/ThugLife/ThugLife.pch";
 				INFOPLIST_FILE = ThugLife/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.gaohaohao.ThugLife;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -516,6 +566,7 @@
 				A0E4139C1E76302F00851E99 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A0E4139D1E76302F00851E99 /* Build configuration list for PBXNativeTarget "ThugLifeTests" */ = {
 			isa = XCConfigurationList;
@@ -524,6 +575,7 @@
 				A0E4139F1E76302F00851E99 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A0E413A01E76302F00851E99 /* Build configuration list for PBXNativeTarget "ThugLifeUITests" */ = {
 			isa = XCConfigurationList;
@@ -532,6 +584,7 @@
 				A0E413A21E76302F00851E99 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

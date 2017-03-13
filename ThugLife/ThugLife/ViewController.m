@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "GHHPhotoViewController.h"
 
 @interface ViewController ()
 
@@ -16,7 +17,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    self.title = @"浩哥的Thug Life";
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
 }
 
 
@@ -25,5 +27,13 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)selectAlbumAction:(id)sender {
+    GHHPhotoViewController *photoVC = [[GHHPhotoViewController alloc] initWithMaxCount:9 completedHandler:^(NSArray *array) {
+        
+    }];
+    UINavigationController *navi = [[UINavigationController alloc] initWithRootViewController:photoVC];
+    [self presentViewController:navi animated:YES completion:nil];
+//    [self.navigationController pushViewController:photoVC animated:YES];
+}
 
 @end
