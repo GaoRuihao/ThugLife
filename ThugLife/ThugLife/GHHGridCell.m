@@ -37,6 +37,16 @@
 }
 
 - (void)selectBoxAction:(UIButton *)sender {
+    [UIView animateKeyframesWithDuration:0.4 delay:0 options:UIViewKeyframeAnimationOptionAllowUserInteraction animations:^{
+       [UIView addKeyframeWithRelativeStartTime:0 relativeDuration:0.2 animations:^{
+           sender.transform = CGAffineTransformMakeScale(0.7, 0.7);
+       }];
+        [UIView addKeyframeWithRelativeStartTime:0.2 relativeDuration:0.4 animations:^{
+            sender.transform = CGAffineTransformIdentity;
+        }];
+    } completion:^(BOOL finished) {
+        
+    }];
     sender.selected = !sender.selected;
     if (self.btnActionBlock) {
         self.btnActionBlock(sender.isSelected);

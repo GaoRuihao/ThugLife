@@ -14,7 +14,9 @@
 @interface GHHPhotoViewController ()<UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic) NSInteger maxCount;
-@property (nonatomic, assign)SelectPhotosBlock block;
+@property (nonatomic) BOOL isFirstLoad;
+@property (nonatomic) GHHMediaType mediaType;
+@property (nonatomic, copy)SelectPhotosBlock block;
 @property (nonatomic, strong)GHHPhotoManager *photoManager;
 @property (nonatomic, strong)NSMutableArray *albumsArray;
 
@@ -24,10 +26,11 @@
 
 @implementation GHHPhotoViewController
 
-- (instancetype)initWithMaxCount:(NSInteger)maxCount completedHandler:(SelectPhotosBlock)completeHandler {
+- (instancetype)initWithMaxCount:(NSInteger)maxCount type:(GHHMediaType)type completedHandler:(SelectPhotosBlock)completeHandler {
     self = [super init];
     if (self) {
         self.maxCount = maxCount;
+        self.mediaType = type;
         self.block = completeHandler;
     }
     return self;
@@ -40,10 +43,23 @@
     self.tableView.dataSource = self;
     [self.view addSubview:self.tableView];
     self.photoManager = [[GHHPhotoManager alloc] init];
-    self.albumsArray = [NSMutableArray arrayWithArray:[self.photoManager getAlbums]];
+    self.albumsArray = self.mediaType == GHHMediaTypePhoto ? [NSMutableArray arrayWithArray:[self.photoManager getAlbums]] : [NSMutableArray arrayWithArray:[self.photoManager getVideos]];
+    self.isFirstLoad = YES;
     
     UIBarButtonItem *cancelItem = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStylePlain target:self action:@selector(rightBarItem:)];
     self.navigationItem.rightBarButtonItem = cancelItem;
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    if (self.isFirstLoad && self.albumsArray.count > 0) {
+        GHHImageItem *result = self.albumsArray[0];
+        GHHGridViewController *gridVC = [[GHHGridViewController alloc] init];
+        gridVC.assetsFetchResults = result.fetchResult;
+        gridVC.block = self.block;
+        [self.navigationController pushViewController:gridVC animated:NO];
+        self.isFirstLoad = NO;
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -85,6 +101,7 @@
     GHHImageItem *result = self.albumsArray[indexPath.row];
     GHHGridViewController *gridVC = [[GHHGridViewController alloc] init];
     gridVC.assetsFetchResults = result.fetchResult;
+    gridVC.block = self.block;
     [self.navigationController pushViewController:gridVC animated:YES];
 }
 

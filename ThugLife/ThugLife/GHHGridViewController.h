@@ -8,9 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+typedef void(^SelectPhotosBlock)(NSArray *array);
 @interface GHHGridViewController : UIViewController
 
 @property(nonatomic, strong)PHFetchResult *assetsFetchResults;
-//@property(nonatomic, copy)
+@property(nonatomic, copy)SelectPhotosBlock block;
 
 @end

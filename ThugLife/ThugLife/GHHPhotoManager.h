@@ -12,6 +12,10 @@
 
 - (NSArray *)getAlbums;
 
+- (NSArray *)getVideos;
+
 - (void)getImageFromAsset:(PHAsset *)asset targetSize:(CGSize)size completeHandler:(void (^)(UIImage *))completeHandler;
+
+- (AVAsset *)requestVideoWithAsset:(PHAsset *)asset;
 
 @end

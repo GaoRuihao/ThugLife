@@ -14,8 +14,10 @@
 @interface GHHGridViewController ()<UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
 @property(nonatomic, strong)UICollectionView *collectionView;
-@property(nonatomic, strong)GHHPhotoManager *photoManager;
 @property(nonatomic) CGSize itemSize;
+
+@property(nonatomic, strong)GHHPhotoManager *photoManager;
+@property(nonatomic, strong)NSMutableArray *selectArray;
 
 @end
 
@@ -26,6 +28,8 @@ static NSString *cellID = @"collectionCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.photoManager = [[GHHPhotoManager alloc] init];
+    self.selectArray = [NSMutableArray array];
+    
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"完成" style:UIBarButtonItemStylePlain target:self action:@selector(rightBarItem:)];
     
     CGFloat width = (self.view.width - 2) / 3.0;
@@ -49,6 +53,10 @@ static NSString *cellID = @"collectionCell";
 
 - (void)rightBarItem:(UIBarButtonItem *)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
+    if (self.block) {
+        self.block(self.selectArray);
+    }
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"kDidFinishPickeMedia" object:nil];
 }
 
 #pragma mark - UICollectionViewDelegate
@@ -66,10 +74,24 @@ static NSString *cellID = @"collectionCell";
     [self.photoManager getImageFromAsset:asset targetSize:self.itemSize completeHandler:^void (UIImage *image) {
         cell.imageView.image = image;
     }];
+    __weak typeof(self) weakSelf = self;
     cell.btnActionBlock = ^(BOOL isSelected) {
-        
+        [weakSelf updateSelectedArrayWithAsset:asset isSelected:isSelected];
     };
     return cell;
+}
+
+#pragma mark - private method
+- (void)updateSelectedArrayWithAsset:(PHAsset *)asset isSelected:(BOOL)isSelected {
+    if (isSelected) {
+        if (![self.selectArray containsObject:asset]) {
+            [self.selectArray addObject:asset];
+        }
+    } else {
+        if ([self.selectArray containsObject:asset]) {
+            [self.selectArray removeObject:asset];
+        }
+    }
 }
 
 /*

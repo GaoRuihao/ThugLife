@@ -8,10 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+typedef enum : NSUInteger {
+    GHHMediaTypePhoto,
+    GHHMediaTypeVideo,
+} GHHMediaType;
+
 typedef void(^SelectPhotosBlock)(NSArray *array);
 
 @interface GHHPhotoViewController : UIViewController
 
-- (instancetype)initWithMaxCount:(NSInteger)maxCount completedHandler:(SelectPhotosBlock)completeHandler;
+- (instancetype)initWithMaxCount:(NSInteger)maxCount type:(GHHMediaType)type completedHandler:(SelectPhotosBlock)completeHandler;
 
 @end

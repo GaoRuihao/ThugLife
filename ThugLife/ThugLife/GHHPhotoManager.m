@@ -34,19 +34,27 @@
     NSMutableArray *results = [NSMutableArray array];
     PHFetchOptions *smartOptions = [[PHFetchOptions alloc] init];
     PHFetchResult *smartAlbums = [PHAssetCollection fetchAssetCollectionsWithType:PHAssetCollectionTypeSmartAlbum subtype:PHAssetCollectionSubtypeAlbumRegular options:smartOptions];
-    [results addObjectsFromArray:[self convertCollection:smartAlbums]];
+    [results addObjectsFromArray:[self convertCollection:smartAlbums type:PHAssetMediaTypeImage]];
     
     PHFetchResult *topLevlelUserCollections = [PHCollectionList fetchTopLevelUserCollectionsWithOptions:nil];
-    [results addObjectsFromArray:[self convertCollection:topLevlelUserCollections]];
+    [results addObjectsFromArray:[self convertCollection:topLevlelUserCollections type:PHAssetMediaTypeImage]];
     return results;
 }
 
-- (NSArray *)convertCollection:(PHFetchResult *)collection {
+- (NSArray *)getVideos {
+    NSMutableArray *results = [NSMutableArray array];
+    PHFetchOptions *smartOptions = [[PHFetchOptions alloc] init];
+    PHFetchResult *smartAlbums = [PHAssetCollection fetchAssetCollectionsWithType:PHAssetCollectionTypeSmartAlbum subtype:PHAssetCollectionSubtypeSmartAlbumVideos options:smartOptions];
+    [results addObjectsFromArray:[self convertCollection:smartAlbums type:PHAssetMediaTypeVideo]];
+    return results;
+}
+
+- (NSArray *)convertCollection:(PHFetchResult *)collection type:(PHAssetMediaType)type {
     NSMutableArray *array = [NSMutableArray array];
     for (int i = 0; i < collection.count; i++) {
         PHFetchOptions *resultOptions = [[PHFetchOptions alloc] init];
         resultOptions.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"creationDate" ascending:NO]];
-        resultOptions.predicate = [NSPredicate predicateWithFormat:@"mediaType = %d", PHAssetMediaTypeImage];
+        resultOptions.predicate = [NSPredicate predicateWithFormat:@"mediaType = %d", type];
         PHAssetCollection *c = collection[i];
         if ([c isKindOfClass:[PHAssetCollection class]]) {
             PHFetchResult *assetsFetchResult = [PHAsset fetchAssetsInAssetCollection:c options:resultOptions];
@@ -67,6 +75,22 @@
 
 - (void)resetCachedAssets {
     
+}
+
+- (AVAsset *)requestVideoWithAsset:(PHAsset *)asset {
+    dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
+    
+    PHVideoRequestOptions *option = [PHVideoRequestOptions new];
+    __block AVAsset *resultAsset;
+    
+    [[PHImageManager defaultManager] requestAVAssetForVideo:asset options:option resultHandler:^(AVAsset * avasset, AVAudioMix * audioMix, NSDictionary * info) {
+        resultAsset = avasset;
+        dispatch_semaphore_signal(semaphore);
+    }];
+    
+    dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+    // yay, we synchronously have the asset
+    return resultAsset;
 }
 
 #pragma mark - PHPhotoLibraryChangeObserver
