@@ -9,16 +9,19 @@
 #import "GHHPhotoEditingViewController.h"
 #import "UIView+Addition.h"
 #import "GHHPhotoManager.h"
+#import <MediaPlayer/MediaPlayer.h>
+#import "GHHPhotoZoomViewController.h"
 
 @interface GHHPhotoEditingViewController ()
 
 @property(nonatomic, strong)PHAsset *asset;
 @property(nonatomic, strong)GHHPhotoManager *manager;
-@property(nonatomic, strong)AVAsset *avasset;
+@property(nonatomic, strong)AVURLAsset *avasset;
 @property(nonatomic, strong)AVAssetImageGenerator *generator;
-@property(nonatomic, strong)NSMutableArray *testArray;
 
 @property(nonatomic, strong)UIImageView *imageView;
+@property(nonatomic, strong)MPMoviePlayerController *moviePlayer;
+@property(nonatomic, strong)UISlider *slider;
 
 @end
 
@@ -34,39 +37,50 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.edgesForExtendedLayout = UIRectEdgeNone;
     self.view.backgroundColor = [UIColor whiteColor];
     self.manager = [[GHHPhotoManager alloc] init];
     self.avasset = [self.manager requestVideoWithAsset:self.asset];
-    self.generator = [[AVAssetImageGenerator alloc] initWithAsset:self.avasset];
-    self.generator.appliesPreferredTrackTransform=TRUE;
+    self.moviePlayer = [[MPMoviePlayerController alloc] initWithContentURL:self.avasset.URL];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(moviePlayerThumbnailImageRequestDidFinish:) name:MPMoviePlayerThumbnailImageRequestDidFinishNotification object:nil];
     
-    self.imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, (self.view.height - self.view.width) / 2, self.view.width, self.view.width)];
-    __weak typeof(self) weakSelf = self;
-    [self.manager getImageFromAsset:self.asset targetSize:CGSizeMake(self.view.width, self.view.width) completeHandler:^(UIImage *image) {
-        weakSelf.imageView.image = image;
-    }];
+//    self.generator = [[AVAssetImageGenerator alloc] initWithAsset:self.avasset];
+//    self.generator.appliesPreferredTrackTransform=TRUE;
+    
+    self.imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 10, self.view.width, self.view.height - 184)];
+    self.imageView.contentMode = UIViewContentModeScaleAspectFit;
     [self.view addSubview:self.imageView];
     
-    UISlider *slider = [[UISlider alloc] initWithFrame:CGRectMake(20, self.view.height - 100, self.view.width - 40, 100)];
-    [slider addTarget:self action:@selector(sliderValueChanged:) forControlEvents:UIControlEventValueChanged];
-    slider.maximumValue = self.asset.duration;
-    slider.minimumValue = 0.0;
-    [self.view addSubview:slider];
+    self.slider = [[UISlider alloc] initWithFrame:CGRectMake(20, self.view.height - 164, self.view.width - 40, 100)];
+    [self.slider addTarget:self action:@selector(sliderValueChanged:) forControlEvents:UIControlEventValueChanged];
+    self.slider.maximumValue = self.asset.duration;
+    self.slider.minimumValue = 0.0;
+    [self.view addSubview:self.slider];
     
-    CGFloat i = 0;
-    self.testArray = [NSMutableArray array];
-    while (i < self.asset.duration) {
-        UIImage *image = [self thumbnailImageAtTime:i];
-        [self.testArray addObject:image];
-        i += 0.1;
-    }
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"下一步" style:UIBarButtonItemStylePlain target:self action:@selector(rightBarItemAction:)];
     
 }
 
+#pragma mark - Norification
+- (void)moviePlayerThumbnailImageRequestDidFinish:(NSNotification *)notify {
+    NSDictionary *userinfo = [notify userInfo];
+    NSError* value = [userinfo objectForKey:MPMoviePlayerThumbnailErrorKey];
+    if (value != nil) {
+        NSLog(@"Error creating video thumbnail image. Details: %@", [value debugDescription]);
+    } else {
+        self.imageView.image = [userinfo valueForKey:MPMoviePlayerThumbnailImageKey];
+    }
+}
+
+#pragma mark - Action
+- (void)rightBarItemAction:(UIBarButtonItem *)sender {
+    GHHPhotoZoomViewController *zoomVC = [[GHHPhotoZoomViewController alloc] initWithAsset:self.avasset time:self.slider.value];
+    [self.navigationController pushViewController:zoomVC animated:YES];
+}
+
 - (void)sliderValueChanged:(UISlider *)sender {
-    int index = sender.value * 10;
-    NSLog(@"🐶🐶🐶       %d", index);
-    self.imageView.image = self.testArray[index];
+    [self.moviePlayer requestThumbnailImagesAtTimes:@[@(sender.value)] timeOption:MPMovieTimeOptionExact];
     
 //    CMTime thumbTime = CMTimeMakeWithSeconds(sender.value,30);
 //    NSLog(@"🐶🐶🐶 %f", sender.value);

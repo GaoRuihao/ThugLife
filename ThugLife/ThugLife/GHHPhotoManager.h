@@ -16,6 +16,6 @@
 
 - (void)getImageFromAsset:(PHAsset *)asset targetSize:(CGSize)size completeHandler:(void (^)(UIImage *))completeHandler;
 
-- (AVAsset *)requestVideoWithAsset:(PHAsset *)asset;
+- (AVURLAsset *)requestVideoWithAsset:(PHAsset *)asset;
 
 @end

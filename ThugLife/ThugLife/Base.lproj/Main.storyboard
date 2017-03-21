@@ -69,7 +69,6 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ivA-lm-5PT">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.51249873479999997" green="0.51249873479999997" blue="0.51249873479999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </textAttributes>

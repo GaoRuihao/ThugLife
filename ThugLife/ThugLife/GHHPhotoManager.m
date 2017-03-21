@@ -77,7 +77,7 @@
     
 }
 
-- (AVAsset *)requestVideoWithAsset:(PHAsset *)asset {
+- (AVURLAsset *)requestVideoWithAsset:(PHAsset *)asset {
     dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
     
     PHVideoRequestOptions *option = [PHVideoRequestOptions new];

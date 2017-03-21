@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A03581461E811F2F00CF0432 /* AnimationAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A03581451E811F2F00CF0432 /* AnimationAddViewController.m */; };
 		A0CFB8D11E763C5200404ACC /* UIViewController+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = A0CFB8D01E763C5200404ACC /* UIViewController+Addition.m */; };
 		A0CFB8D61E763C5C00404ACC /* GHHPhotoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A0CFB8D31E763C5C00404ACC /* GHHPhotoManager.m */; };
 		A0CFB8D71E763C5C00404ACC /* GHHPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0CFB8D51E763C5C00404ACC /* GHHPhotoViewController.m */; };
@@ -15,6 +16,7 @@
 		A0CFB8E11E767E7800404ACC /* UIView+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = A0CFB8E01E767E7800404ACC /* UIView+Addition.m */; };
 		A0CFB8E41E76990400404ACC /* GHHGridCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A0CFB8E31E76990400404ACC /* GHHGridCell.m */; };
 		A0CFB8E71E77C80500404ACC /* GHHPhotoEditingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0CFB8E61E77C80500404ACC /* GHHPhotoEditingViewController.m */; };
+		A0CFB8EA1E7926E400404ACC /* GHHPhotoZoomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0CFB8E91E7926E400404ACC /* GHHPhotoZoomViewController.m */; };
 		A0E413721E76302F00851E99 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A0E413711E76302F00851E99 /* main.m */; };
 		A0E413751E76302F00851E99 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A0E413741E76302F00851E99 /* AppDelegate.m */; };
 		A0E413781E76302F00851E99 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0E413771E76302F00851E99 /* ViewController.m */; };
@@ -43,6 +45,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A03581441E811F2F00CF0432 /* AnimationAddViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AnimationAddViewController.h; path = PhotoEdit/AnimationAddViewController.h; sourceTree = "<group>"; };
+		A03581451E811F2F00CF0432 /* AnimationAddViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AnimationAddViewController.m; path = PhotoEdit/AnimationAddViewController.m; sourceTree = "<group>"; };
 		A0CFB8CF1E763C5200404ACC /* UIViewController+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Addition.h"; sourceTree = "<group>"; };
 		A0CFB8D01E763C5200404ACC /* UIViewController+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Addition.m"; sourceTree = "<group>"; };
 		A0CFB8D21E763C5C00404ACC /* GHHPhotoManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHHPhotoManager.h; sourceTree = "<group>"; };
@@ -60,6 +64,8 @@
 		A0CFB8E31E76990400404ACC /* GHHGridCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHHGridCell.m; sourceTree = "<group>"; };
 		A0CFB8E51E77C80500404ACC /* GHHPhotoEditingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHHPhotoEditingViewController.h; sourceTree = "<group>"; };
 		A0CFB8E61E77C80500404ACC /* GHHPhotoEditingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHHPhotoEditingViewController.m; sourceTree = "<group>"; };
+		A0CFB8E81E7926E400404ACC /* GHHPhotoZoomViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHHPhotoZoomViewController.h; sourceTree = "<group>"; };
+		A0CFB8E91E7926E400404ACC /* GHHPhotoZoomViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHHPhotoZoomViewController.m; sourceTree = "<group>"; };
 		A0E4136D1E76302F00851E99 /* ThugLife.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ThugLife.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0E413711E76302F00851E99 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A0E413731E76302F00851E99 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -103,6 +109,45 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A0CFB8EB1E7926EA00404ACC /* PhotoEdit */ = {
+			isa = PBXGroup;
+			children = (
+				A0CFB8E51E77C80500404ACC /* GHHPhotoEditingViewController.h */,
+				A0CFB8E61E77C80500404ACC /* GHHPhotoEditingViewController.m */,
+				A0CFB8E81E7926E400404ACC /* GHHPhotoZoomViewController.h */,
+				A0CFB8E91E7926E400404ACC /* GHHPhotoZoomViewController.m */,
+				A03581441E811F2F00CF0432 /* AnimationAddViewController.h */,
+				A03581451E811F2F00CF0432 /* AnimationAddViewController.m */,
+			);
+			name = PhotoEdit;
+			sourceTree = "<group>";
+		};
+		A0CFB8EC1E7926FF00404ACC /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				A0CFB8CF1E763C5200404ACC /* UIViewController+Addition.h */,
+				A0CFB8D01E763C5200404ACC /* UIViewController+Addition.m */,
+				A0CFB8DF1E767E7800404ACC /* UIView+Addition.h */,
+				A0CFB8E01E767E7800404ACC /* UIView+Addition.m */,
+			);
+			name = Common;
+			sourceTree = "<group>";
+		};
+		A0CFB8EE1E79271A00404ACC /* MediaPicker */ = {
+			isa = PBXGroup;
+			children = (
+				A0CFB8D91E764E2500404ACC /* GHHImageItem.h */,
+				A0CFB8DA1E764E2500404ACC /* GHHImageItem.m */,
+				A0CFB8D41E763C5C00404ACC /* GHHPhotoViewController.h */,
+				A0CFB8D51E763C5C00404ACC /* GHHPhotoViewController.m */,
+				A0CFB8DC1E767CCB00404ACC /* GHHGridViewController.h */,
+				A0CFB8DD1E767CCB00404ACC /* GHHGridViewController.m */,
+				A0CFB8E21E76990400404ACC /* GHHGridCell.h */,
+				A0CFB8E31E76990400404ACC /* GHHGridCell.m */,
+			);
+			name = MediaPicker;
+			sourceTree = "<group>";
+		};
 		A0E413641E76302E00851E99 = {
 			isa = PBXGroup;
 			children = (
@@ -126,26 +171,15 @@
 		A0E4136F1E76302F00851E99 /* ThugLife */ = {
 			isa = PBXGroup;
 			children = (
+				A0CFB8EE1E79271A00404ACC /* MediaPicker */,
+				A0CFB8EC1E7926FF00404ACC /* Common */,
+				A0CFB8EB1E7926EA00404ACC /* PhotoEdit */,
 				A0E413731E76302F00851E99 /* AppDelegate.h */,
 				A0E413741E76302F00851E99 /* AppDelegate.m */,
 				A0E413761E76302F00851E99 /* ViewController.h */,
 				A0E413771E76302F00851E99 /* ViewController.m */,
-				A0CFB8E51E77C80500404ACC /* GHHPhotoEditingViewController.h */,
-				A0CFB8E61E77C80500404ACC /* GHHPhotoEditingViewController.m */,
-				A0CFB8CF1E763C5200404ACC /* UIViewController+Addition.h */,
-				A0CFB8D01E763C5200404ACC /* UIViewController+Addition.m */,
-				A0CFB8DF1E767E7800404ACC /* UIView+Addition.h */,
-				A0CFB8E01E767E7800404ACC /* UIView+Addition.m */,
 				A0CFB8D21E763C5C00404ACC /* GHHPhotoManager.h */,
 				A0CFB8D31E763C5C00404ACC /* GHHPhotoManager.m */,
-				A0CFB8D91E764E2500404ACC /* GHHImageItem.h */,
-				A0CFB8DA1E764E2500404ACC /* GHHImageItem.m */,
-				A0CFB8D41E763C5C00404ACC /* GHHPhotoViewController.h */,
-				A0CFB8D51E763C5C00404ACC /* GHHPhotoViewController.m */,
-				A0CFB8DC1E767CCB00404ACC /* GHHGridViewController.h */,
-				A0CFB8DD1E767CCB00404ACC /* GHHGridViewController.m */,
-				A0CFB8E21E76990400404ACC /* GHHGridCell.h */,
-				A0CFB8E31E76990400404ACC /* GHHGridCell.m */,
 				A0E413791E76302F00851E99 /* Main.storyboard */,
 				A0E4137C1E76302F00851E99 /* Assets.xcassets */,
 				A0E4137E1E76302F00851E99 /* LaunchScreen.storyboard */,
@@ -324,8 +358,10 @@
 				A0CFB8D11E763C5200404ACC /* UIViewController+Addition.m in Sources */,
 				A0CFB8DB1E764E2500404ACC /* GHHImageItem.m in Sources */,
 				A0CFB8E41E76990400404ACC /* GHHGridCell.m in Sources */,
+				A03581461E811F2F00CF0432 /* AnimationAddViewController.m in Sources */,
 				A0CFB8E11E767E7800404ACC /* UIView+Addition.m in Sources */,
 				A0E413721E76302F00851E99 /* main.m in Sources */,
+				A0CFB8EA1E7926E400404ACC /* GHHPhotoZoomViewController.m in Sources */,
 				A0CFB8DE1E767CCB00404ACC /* GHHGridViewController.m in Sources */,
 				A0CFB8D61E763C5C00404ACC /* GHHPhotoManager.m in Sources */,
 				A0CFB8E71E77C80500404ACC /* GHHPhotoEditingViewController.m in Sources */,
