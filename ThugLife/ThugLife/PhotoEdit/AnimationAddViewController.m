@@ -9,13 +9,16 @@
 #import "AnimationAddViewController.h"
 #import <AssetsLibrary/AssetsLibrary.h>
 
-@interface AnimationAddViewController ()
+@interface AnimationAddViewController () {
+    AVMutableComposition *mixComposition;
+}
 
 @property(nonatomic, assign)CGPoint zoomCenter;
 @property(nonatomic, strong)UIImage *editImage;
 
 @property(nonatomic, strong)NSString  *theVideoPath;
 @property(nonatomic, strong)AVAsset *videoAsset;
+@property(nonatomic, strong)AVMutableComposition *mutableComposition;
 
 @end
 
@@ -182,16 +185,28 @@
     [overlayLayer1 setContents:(id)[animationImage CGImage]];
     overlayLayer1.frame = CGRectMake(0, 0, size.width, size.height);
     [overlayLayer1 setMasksToBounds:YES];
+    overlayLayer1.opacity = 0.0;
     
     CABasicAnimation *animation=[CABasicAnimation animationWithKeyPath:@"bounds"];
     animation.duration = 5.0;
     animation.repeatCount = 0;
     animation.autoreverses = YES;
     // animate from invisible to fully visible
-    animation.fromValue = [NSValue valueWithCGRect:CGRectMake(0, 0, 375, 648)];
-    animation.toValue = [NSValue valueWithCGRect:CGRectMake(self.zoomCenter.x, self.zoomCenter.y, 375 * 3, 648 * 3)];
-    animation.beginTime = AVCoreAnimationBeginTimeAtZero;
-    [overlayLayer1 addAnimation:animation forKey:@"animateOpacity"];
+    animation.fromValue = [NSValue valueWithCGRect:CGRectMake(0, 0, size.width, size.height)];
+    animation.toValue = [NSValue valueWithCGRect:CGRectMake(self.zoomCenter.x, self.zoomCenter.y, size.width * 3, size.height * 3)];
+    animation.beginTime = self.choosedTime;
+    
+    CABasicAnimation *animation1 = [CABasicAnimation animationWithKeyPath:@"opacity"];
+    animation1.duration = 5;
+    animation1.repeatCount = 0;
+    animation1.autoreverses = YES;
+    // animate from invisible to fully visible
+    animation1.fromValue = [NSNumber numberWithFloat:1.0];
+    animation1.toValue = [NSNumber numberWithFloat:1.0];
+    animation1.beginTime = self.choosedTime;
+    
+    [overlayLayer1 addAnimation:animation forKey:@"animatebounds"];
+    [overlayLayer1 addAnimation:animation1 forKey:@"animateOpacity"];
     
     // 5
     CALayer *parentLayer = [CALayer layer];
@@ -205,8 +220,8 @@
                                  videoCompositionCoreAnimationToolWithPostProcessingAsVideoLayer:videoLayer inLayer:parentLayer];
 }
 
-- (void)videoOutput
-{
+// 视频添加动画
+- (void)videoOutput {
     self.videoAsset = [AVAsset assetWithURL:[NSURL fileURLWithPath:self.theVideoPath]];
     // 1 - Early exit if there's no video file selected
     if (!self.videoAsset) {
@@ -215,24 +230,39 @@
         [alert show];
         return;
     }
+    // 处理视频剪切
+    CMTime trimmedDuration = CMTimeMakeWithSeconds(self.choosedTime, 1);
     
     // 2 - Create AVMutableComposition object. This object will hold your AVMutableCompositionTrack instances.
-    AVMutableComposition *mixComposition = [[AVMutableComposition alloc] init];
+    mixComposition = [[AVMutableComposition alloc] init];
     
+    AVAssetTrack *firstAssetTrack = [[self.avAsset tracksWithMediaType:AVMediaTypeVideo] objectAtIndex:0];
+    AVAssetTrack *videoAssetTrack = [[self.videoAsset tracksWithMediaType:AVMediaTypeVideo] objectAtIndex:0];
     // 3 - Video track
-    AVMutableCompositionTrack *videoTrack = [mixComposition addMutableTrackWithMediaType:AVMediaTypeVideo
+    AVMutableCompositionTrack *firstTrack = [mixComposition addMutableTrackWithMediaType:AVMediaTypeVideo
                                                                         preferredTrackID:kCMPersistentTrackID_Invalid];
-    [videoTrack insertTimeRange:CMTimeRangeMake(kCMTimeZero, self.videoAsset.duration)
-                        ofTrack:[[self.videoAsset tracksWithMediaType:AVMediaTypeVideo] objectAtIndex:0]
+    //第一段视频剪切
+    [firstTrack insertTimeRange:CMTimeRangeMake(kCMTimeZero, trimmedDuration)
+                        ofTrack:[[self.avAsset tracksWithMediaType:AVMediaTypeVideo] objectAtIndex:0]
                          atTime:kCMTimeZero error:nil];
+    AVMutableCompositionTrack *secondTrack = [mixComposition addMutableTrackWithMediaType:AVMediaTypeVideo preferredTrackID:kCMPersistentTrackID_Invalid];
+    //第二段视频
+    [secondTrack insertTimeRange:CMTimeRangeMake(kCMTimeZero, self.videoAsset.duration)
+                        ofTrack:[[self.videoAsset tracksWithMediaType:AVMediaTypeVideo] objectAtIndex:0]
+                         atTime:trimmedDuration error:nil];
     
     // 3.1 - Create AVMutableVideoCompositionInstruction
     AVMutableVideoCompositionInstruction *mainInstruction = [AVMutableVideoCompositionInstruction videoCompositionInstruction];
-    mainInstruction.timeRange = CMTimeRangeMake(kCMTimeZero, self.videoAsset.duration);
+    mainInstruction.timeRange = CMTimeRangeMake(kCMTimeZero, CMTimeAdd(trimmedDuration, self.videoAsset.duration));
+    
+    // 第一个视频的架构层
+    AVMutableVideoCompositionLayerInstruction *firstlayerInstruction = [AVMutableVideoCompositionLayerInstruction videoCompositionLayerInstructionWithAssetTrack:firstTrack];
     
     // 3.2 - Create an AVMutableVideoCompositionLayerInstruction for the video track and fix the orientation.
-    AVMutableVideoCompositionLayerInstruction *videolayerInstruction = [AVMutableVideoCompositionLayerInstruction videoCompositionLayerInstructionWithAssetTrack:videoTrack];
-    AVAssetTrack *videoAssetTrack = [[self.videoAsset tracksWithMediaType:AVMediaTypeVideo] objectAtIndex:0];
+    AVMutableVideoCompositionLayerInstruction *videolayerInstruction = [AVMutableVideoCompositionLayerInstruction videoCompositionLayerInstructionWithAssetTrack:secondTrack];
+    
+    
+    
     UIImageOrientation videoAssetOrientation_  = UIImageOrientationUp;
     BOOL isVideoAssetPortrait_  = NO;
     CGAffineTransform videoTransform = videoAssetTrack.preferredTransform;
@@ -254,15 +284,15 @@
     [videolayerInstruction setOpacity:0.0 atTime:self.videoAsset.duration];
     
     // 3.3 - Add instructions
-    mainInstruction.layerInstructions = [NSArray arrayWithObjects:videolayerInstruction,nil];
+    mainInstruction.layerInstructions = [NSArray arrayWithObjects:firstlayerInstruction, videolayerInstruction,nil];
     
     AVMutableVideoComposition *mainCompositionInst = [AVMutableVideoComposition videoComposition];
     
     CGSize naturalSize;
     if(isVideoAssetPortrait_){
-        naturalSize = CGSizeMake(videoAssetTrack.naturalSize.height, videoAssetTrack.naturalSize.width);
+        naturalSize = CGSizeMake(firstAssetTrack.naturalSize.height, firstAssetTrack.naturalSize.width);
     } else {
-        naturalSize = videoAssetTrack.naturalSize;
+        naturalSize = firstAssetTrack.naturalSize;
     }
     
     float renderWidth, renderHeight;
@@ -270,7 +300,7 @@
     renderHeight = naturalSize.height;
     mainCompositionInst.renderSize = CGSizeMake(renderWidth, renderHeight);
     mainCompositionInst.instructions = [NSArray arrayWithObject:mainInstruction];
-    mainCompositionInst.frameDuration = CMTimeMake(1, 30);
+    mainCompositionInst.frameDuration = CMTimeMake(self.choosedTime, 600);
     
     [self applyVideoEffectsToComposition:mainCompositionInst size:naturalSize];
     

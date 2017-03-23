@@ -10,6 +10,9 @@
 
 @interface AnimationAddViewController : UIViewController
 
+@property(nonatomic)NSTimeInterval choosedTime;
+@property(nonatomic, strong)AVURLAsset *avAsset;
+
 - (instancetype)initWithPoint:(CGPoint)zoomCenter image:(UIImage *)image;
 
 @end

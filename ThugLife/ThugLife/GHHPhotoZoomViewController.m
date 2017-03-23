@@ -70,8 +70,9 @@
 
 - (void)rightBarItem:(UIBarButtonItem *)sender {
 //    CGPoint center = CGPointMake(self.scrollView.contentOffset.x + self.scrollView.width / 2, self.scrollView.contentOffset.y + self.scrollView.height / 2);
-    CGFloat test = self.scrollView.zoomScale;
     AnimationAddViewController *addVC = [[AnimationAddViewController alloc] initWithPoint:self.scrollView.contentOffset image:self.imageView.image];
+    addVC.avAsset = self.avAsset;
+    addVC.choosedTime = self.chosedTime;
     [self.navigationController pushViewController:addVC animated:YES];
 }
 
