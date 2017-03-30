@@ -231,7 +231,7 @@
         return;
     }
     // 处理视频剪切
-    CMTime trimmedDuration = CMTimeMakeWithSeconds(self.choosedTime, 1);
+    CMTime trimmedDuration = CMTimeMakeWithSeconds(self.choosedTime, 600);
     
     // 2 - Create AVMutableComposition object. This object will hold your AVMutableCompositionTrack instances.
     mixComposition = [[AVMutableComposition alloc] init];
@@ -281,7 +281,7 @@
         videoAssetOrientation_ = UIImageOrientationDown;
     }
     [videolayerInstruction setTransform:videoAssetTrack.preferredTransform atTime:kCMTimeZero];
-    [videolayerInstruction setOpacity:0.0 atTime:self.videoAsset.duration];
+    [videolayerInstruction setOpacity:0.0 atTime:trimmedDuration];
     
     // 3.3 - Add instructions
     mainInstruction.layerInstructions = [NSArray arrayWithObjects:firstlayerInstruction, videolayerInstruction,nil];
@@ -300,7 +300,7 @@
     renderHeight = naturalSize.height;
     mainCompositionInst.renderSize = CGSizeMake(renderWidth, renderHeight);
     mainCompositionInst.instructions = [NSArray arrayWithObject:mainInstruction];
-    mainCompositionInst.frameDuration = CMTimeMake(self.choosedTime, 600);
+    mainCompositionInst.frameDuration = CMTimeMake(1, 30);
     
     [self applyVideoEffectsToComposition:mainCompositionInst size:naturalSize];
     

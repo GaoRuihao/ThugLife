@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ThugLife/GHHPhotoEditingViewController.m"
-            timestampString = "511259778.659835"
+            timestampString = "512559768.961212"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "112"
-            endingLineNumber = "112"
+            startingLineNumber = "111"
+            endingLineNumber = "111"
             landmarkName = "-movieImage:"
             landmarkType = "7">
          </BreakpointContent>
@@ -36,11 +36,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ThugLife/PhotoEdit/AnimationAddViewController.m"
-            timestampString = "511951762.62647"
+            timestampString = "512556685.925126"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "335"
-            endingLineNumber = "335"
+            startingLineNumber = "336"
+            endingLineNumber = "336"
             landmarkName = "-exportDidFinish:"
             landmarkType = "7">
          </BreakpointContent>
@@ -52,11 +52,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ThugLife/PhotoEdit/AnimationAddViewController.m"
-            timestampString = "511951762.62647"
+            timestampString = "512556685.925126"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "333"
-            endingLineNumber = "333"
+            startingLineNumber = "334"
+            endingLineNumber = "334"
             landmarkName = "-exportDidFinish:"
             landmarkType = "7">
             <Locations>
@@ -68,11 +68,11 @@
                   moduleName = "ThugLife"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/kankan/Documents/ThugLife/ThugLife/ThugLife/PhotoEdit/AnimationAddViewController.m"
-                  timestampString = "511949607.24073"
+                  timestampString = "512557338.685638"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "391"
-                  endingLineNumber = "391"
+                  startingLineNumber = "334"
+                  endingLineNumber = "334"
                   offsetFromSymbolStart = "228">
                </Location>
                <Location
@@ -83,11 +83,11 @@
                   moduleName = "ThugLife"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/kankan/Documents/ThugLife/ThugLife/ThugLife/PhotoEdit/AnimationAddViewController.m"
-                  timestampString = "511949607.241929"
+                  timestampString = "512557338.688301"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "391"
-                  endingLineNumber = "391"
+                  startingLineNumber = "334"
+                  endingLineNumber = "334"
                   offsetFromSymbolStart = "24">
                </Location>
             </Locations>
@@ -100,11 +100,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ThugLife/PhotoEdit/AnimationAddViewController.m"
-            timestampString = "511951762.62647"
+            timestampString = "512556685.925126"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "329"
-            endingLineNumber = "329"
+            startingLineNumber = "330"
+            endingLineNumber = "330"
             landmarkName = "-exportDidFinish:"
             landmarkType = "7">
          </BreakpointContent>
@@ -116,11 +116,43 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ThugLife/PhotoEdit/AnimationAddViewController.m"
-            timestampString = "511951762.62647"
+            timestampString = "512556685.925126"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "225"
-            endingLineNumber = "225"
+            startingLineNumber = "306"
+            endingLineNumber = "306"
+            landmarkName = "-videoOutput"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ThugLife/PhotoEdit/AnimationAddViewController.m"
+            timestampString = "512556660.450969"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "257"
+            endingLineNumber = "257"
+            landmarkName = "-videoOutput"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ThugLife/PhotoEdit/AnimationAddViewController.m"
+            timestampString = "512557299.048155"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "234"
+            endingLineNumber = "234"
             landmarkName = "-videoOutput"
             landmarkType = "7">
          </BreakpointContent>

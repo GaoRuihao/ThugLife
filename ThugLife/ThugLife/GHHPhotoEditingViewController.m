@@ -101,7 +101,6 @@
 
 - (UIImage *)thumbnailImageAtTime:(NSTimeInterval)playbackTime
 {
-    NSLog(@"🐶🐶🐶 %f", playbackTime);
     CGImageRef imageRef = [self.generator copyCGImageAtTime:CMTimeMakeWithSeconds(playbackTime, 600) actualTime:NULL error:nil];
     UIImage *image = [UIImage imageWithCGImage:imageRef];
     CGImageRelease(imageRef);
