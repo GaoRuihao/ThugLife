@@ -25,6 +25,7 @@
 		A0E413801E76302F00851E99 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0E4137E1E76302F00851E99 /* LaunchScreen.storyboard */; };
 		A0E4138B1E76302F00851E99 /* ThugLifeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A0E4138A1E76302F00851E99 /* ThugLifeTests.m */; };
 		A0E413961E76302F00851E99 /* ThugLifeUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = A0E413951E76302F00851E99 /* ThugLifeUITests.m */; };
+		A0E7387E1E8D0BE3000447E6 /* GHHAddTicketViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0E7387D1E8D0BE2000447E6 /* GHHAddTicketViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +83,8 @@
 		A0E413911E76302F00851E99 /* ThugLifeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ThugLifeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0E413951E76302F00851E99 /* ThugLifeUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ThugLifeUITests.m; sourceTree = "<group>"; };
 		A0E413971E76302F00851E99 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A0E7387C1E8D0BE2000447E6 /* GHHAddTicketViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GHHAddTicketViewController.h; path = PhotoEdit/GHHAddTicketViewController.h; sourceTree = "<group>"; };
+		A0E7387D1E8D0BE2000447E6 /* GHHAddTicketViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GHHAddTicketViewController.m; path = PhotoEdit/GHHAddTicketViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +119,8 @@
 				A0CFB8E61E77C80500404ACC /* GHHPhotoEditingViewController.m */,
 				A0CFB8E81E7926E400404ACC /* GHHPhotoZoomViewController.h */,
 				A0CFB8E91E7926E400404ACC /* GHHPhotoZoomViewController.m */,
+				A0E7387C1E8D0BE2000447E6 /* GHHAddTicketViewController.h */,
+				A0E7387D1E8D0BE2000447E6 /* GHHAddTicketViewController.m */,
 				A03581441E811F2F00CF0432 /* AnimationAddViewController.h */,
 				A03581451E811F2F00CF0432 /* AnimationAddViewController.m */,
 			);
@@ -362,6 +367,7 @@
 				A0CFB8E11E767E7800404ACC /* UIView+Addition.m in Sources */,
 				A0E413721E76302F00851E99 /* main.m in Sources */,
 				A0CFB8EA1E7926E400404ACC /* GHHPhotoZoomViewController.m in Sources */,
+				A0E7387E1E8D0BE3000447E6 /* GHHAddTicketViewController.m in Sources */,
 				A0CFB8DE1E767CCB00404ACC /* GHHGridViewController.m in Sources */,
 				A0CFB8D61E763C5C00404ACC /* GHHPhotoManager.m in Sources */,
 				A0CFB8E71E77C80500404ACC /* GHHPhotoEditingViewController.m in Sources */,

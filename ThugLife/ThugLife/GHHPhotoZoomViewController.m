@@ -9,7 +9,7 @@
 #import "GHHPhotoZoomViewController.h"
 #import "GHHPhotoManager.h"
 #import "UIView+Addition.h"
-#import "AnimationAddViewController.h"
+#import "GHHAddTicketViewController.h"
 
 @interface GHHPhotoZoomViewController ()<UIScrollViewDelegate>
 
@@ -51,6 +51,7 @@
     [self.view addSubview:self.scrollView];
     
     self.imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.scrollView.width, self.scrollView.height)];
+    self.imageView.contentMode = UIViewContentModeScaleAspectFit;
     [self.scrollView addSubview:self.imageView];
     self.generator = [[AVAssetImageGenerator alloc] initWithAsset:self.avAsset];
 //    self.generator.appliesPreferredTrackTransform = TRUE;
@@ -70,7 +71,7 @@
 
 - (void)rightBarItem:(UIBarButtonItem *)sender {
 //    CGPoint center = CGPointMake(self.scrollView.contentOffset.x + self.scrollView.width / 2, self.scrollView.contentOffset.y + self.scrollView.height / 2);
-    AnimationAddViewController *addVC = [[AnimationAddViewController alloc] initWithPoint:self.scrollView.contentOffset image:self.imageView.image];
+    GHHAddTicketViewController *addVC = [[GHHAddTicketViewController alloc] initWithPoint:self.scrollView.contentOffset image:self.imageView.image zoomScale:self.scrollView.zoomScale];
     addVC.avAsset = self.avAsset;
     addVC.choosedTime = self.chosedTime;
     [self.navigationController pushViewController:addVC animated:YES];
