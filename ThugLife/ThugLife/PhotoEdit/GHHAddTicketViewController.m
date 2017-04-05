@@ -9,6 +9,7 @@
 #import "GHHAddTicketViewController.h"
 #import "UIView+Addition.h"
 #import "AnimationAddViewController.h"
+#import "XTPasterStageView.h"
 
 @interface GHHAddTicketViewController ()<UIScrollViewDelegate>
 
@@ -17,6 +18,7 @@
 
 @property(nonatomic, strong)UIImage *editImage;
 @property(nonatomic, strong)UIImageView *imageView;
+@property(nonatomic, strong)XTPasterStageView *pasterView;
 
 @end
 
@@ -46,10 +48,9 @@
     imageScrollView.minimumZoomScale = 1.0;
     [self.view addSubview:imageScrollView];
     
-    self.imageView = [[UIImageView alloc] initWithFrame:imageScrollView.bounds];
-    self.imageView.image = self.editImage;
-    self.imageView.contentMode = UIViewContentModeScaleAspectFit;
-    [imageScrollView addSubview:self.imageView];
+    self.pasterView = [[XTPasterStageView alloc] initWithFrame:imageScrollView.bounds];
+    self.pasterView.originImage = self.editImage;
+    [imageScrollView addSubview:self.pasterView];
     CGFloat xsize = imageScrollView.width / self.zoomScale;
     CGFloat ysize = imageScrollView.height / self.zoomScale;
     [imageScrollView zoomToRect:CGRectMake(self.zoomCenter.x - xsize, self.zoomCenter.y - ysize, xsize, ysize) animated:NO];
@@ -68,7 +69,12 @@
         UIImageView *ticketImageView = [[UIImageView alloc] initWithFrame:CGRectMake(page * self.view.width + index * tWidth, row * 72.5 + 5, tWidth, 67.5)];
         ticketImageView.contentMode = UIViewContentModeScaleAspectFit;
         ticketImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"l%d", i+1]];
+        ticketImageView.tag = 1000 + i +1;
+        ticketImageView.userInteractionEnabled = YES;
         [scrollview addSubview:ticketImageView];
+        
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(pasterClick:)];
+        [ticketImageView addGestureRecognizer:tap];
     }
 }
 
@@ -84,8 +90,16 @@
     [self.navigationController pushViewController:addVC animated:YES];
 }
 
+- (void)pasterClick:(UITapGestureRecognizer *)sender {
+    NSString *paster = [NSString stringWithFormat:@"l%ld", sender.view.tag - 1000] ;
+    UIImage *image = [UIImage imageNamed:paster];
+    if (!image) return;
+    //在这里 添加 贴纸
+    [self.pasterView addPasterWithImg:image];
+}
+
 - (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView {
-    return self.imageView;
+    return self.pasterView;
 }
 
 @end

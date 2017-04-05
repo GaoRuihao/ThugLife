@@ -4,22 +4,6 @@
    version = "2.0">
    <Breakpoints>
       <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ThugLife/GHHPhotoEditingViewController.m"
-            timestampString = "512559768.961212"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "111"
-            endingLineNumber = "111"
-            landmarkName = "-movieImage:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.ExceptionBreakpoint">
          <BreakpointContent
             shouldBeEnabled = "Yes"
@@ -64,31 +48,31 @@
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "__46-[AnimationAddViewController exportDidFinish:]_block_invoke"
+                  symbolName = "-[AnimationAddViewController exportDidFinish:]"
                   moduleName = "ThugLife"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/kankan/Documents/ThugLife/ThugLife/ThugLife/PhotoEdit/AnimationAddViewController.m"
-                  timestampString = "512634417.917959"
+                  timestampString = "513067757.239574"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "334"
                   endingLineNumber = "334"
-                  offsetFromSymbolStart = "100">
+                  offsetFromSymbolStart = "228">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "__46-[AnimationAddViewController exportDidFinish:]_block_invoke_2"
+                  symbolName = "__46-[AnimationAddViewController exportDidFinish:]_block_invoke"
                   moduleName = "ThugLife"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/kankan/Documents/ThugLife/ThugLife/ThugLife/PhotoEdit/AnimationAddViewController.m"
-                  timestampString = "512634417.919095"
+                  timestampString = "513067757.241692"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "334"
                   endingLineNumber = "334"
-                  offsetFromSymbolStart = "16">
+                  offsetFromSymbolStart = "24">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -163,14 +147,12 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ThugLife/GHHPhotoZoomViewController.m"
-            timestampString = "512634335.910827"
+            filePath = "ThugLife/PhotoEdit/GHHAddTicketViewController.m"
+            timestampString = "513067632.62952"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "74"
-            endingLineNumber = "74"
-            landmarkName = "-rightBarItem:"
-            landmarkType = "7">
+            startingLineNumber = "111"
+            endingLineNumber = "111">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

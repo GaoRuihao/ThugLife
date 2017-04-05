@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		A03581461E811F2F00CF0432 /* AnimationAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A03581451E811F2F00CF0432 /* AnimationAddViewController.m */; };
+		A08061E81E94964E00BF2D71 /* XTPasterStageView.m in Sources */ = {isa = PBXBuildFile; fileRef = A08061E51E94964E00BF2D71 /* XTPasterStageView.m */; };
+		A08061E91E94964E00BF2D71 /* XTPasterView.m in Sources */ = {isa = PBXBuildFile; fileRef = A08061E71E94964E00BF2D71 /* XTPasterView.m */; };
+		A08061EC1E94965500BF2D71 /* UIImage+AddFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = A08061EB1E94965500BF2D71 /* UIImage+AddFunction.m */; };
 		A0CFB8D11E763C5200404ACC /* UIViewController+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = A0CFB8D01E763C5200404ACC /* UIViewController+Addition.m */; };
 		A0CFB8D61E763C5C00404ACC /* GHHPhotoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A0CFB8D31E763C5C00404ACC /* GHHPhotoManager.m */; };
 		A0CFB8D71E763C5C00404ACC /* GHHPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0CFB8D51E763C5C00404ACC /* GHHPhotoViewController.m */; };
@@ -48,6 +51,12 @@
 /* Begin PBXFileReference section */
 		A03581441E811F2F00CF0432 /* AnimationAddViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AnimationAddViewController.h; path = PhotoEdit/AnimationAddViewController.h; sourceTree = "<group>"; };
 		A03581451E811F2F00CF0432 /* AnimationAddViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AnimationAddViewController.m; path = PhotoEdit/AnimationAddViewController.m; sourceTree = "<group>"; };
+		A08061E41E94964E00BF2D71 /* XTPasterStageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XTPasterStageView.h; sourceTree = "<group>"; };
+		A08061E51E94964E00BF2D71 /* XTPasterStageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XTPasterStageView.m; sourceTree = "<group>"; };
+		A08061E61E94964E00BF2D71 /* XTPasterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XTPasterView.h; sourceTree = "<group>"; };
+		A08061E71E94964E00BF2D71 /* XTPasterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XTPasterView.m; sourceTree = "<group>"; };
+		A08061EA1E94965500BF2D71 /* UIImage+AddFunction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+AddFunction.h"; sourceTree = "<group>"; };
+		A08061EB1E94965500BF2D71 /* UIImage+AddFunction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+AddFunction.m"; sourceTree = "<group>"; };
 		A0CFB8CF1E763C5200404ACC /* UIViewController+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Addition.h"; sourceTree = "<group>"; };
 		A0CFB8D01E763C5200404ACC /* UIViewController+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Addition.m"; sourceTree = "<group>"; };
 		A0CFB8D21E763C5C00404ACC /* GHHPhotoManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHHPhotoManager.h; sourceTree = "<group>"; };
@@ -112,6 +121,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A07DC4D51E8F9BC700F53E03 /* Paster */ = {
+			isa = PBXGroup;
+			children = (
+				A08061EA1E94965500BF2D71 /* UIImage+AddFunction.h */,
+				A08061EB1E94965500BF2D71 /* UIImage+AddFunction.m */,
+				A08061E41E94964E00BF2D71 /* XTPasterStageView.h */,
+				A08061E51E94964E00BF2D71 /* XTPasterStageView.m */,
+				A08061E61E94964E00BF2D71 /* XTPasterView.h */,
+				A08061E71E94964E00BF2D71 /* XTPasterView.m */,
+			);
+			name = Paster;
+			sourceTree = "<group>";
+		};
 		A0CFB8EB1E7926EA00404ACC /* PhotoEdit */ = {
 			isa = PBXGroup;
 			children = (
@@ -119,10 +141,10 @@
 				A0CFB8E61E77C80500404ACC /* GHHPhotoEditingViewController.m */,
 				A0CFB8E81E7926E400404ACC /* GHHPhotoZoomViewController.h */,
 				A0CFB8E91E7926E400404ACC /* GHHPhotoZoomViewController.m */,
-				A0E7387C1E8D0BE2000447E6 /* GHHAddTicketViewController.h */,
-				A0E7387D1E8D0BE2000447E6 /* GHHAddTicketViewController.m */,
 				A03581441E811F2F00CF0432 /* AnimationAddViewController.h */,
 				A03581451E811F2F00CF0432 /* AnimationAddViewController.m */,
+				A0E7387C1E8D0BE2000447E6 /* GHHAddTicketViewController.h */,
+				A0E7387D1E8D0BE2000447E6 /* GHHAddTicketViewController.m */,
 			);
 			name = PhotoEdit;
 			sourceTree = "<group>";
@@ -176,6 +198,7 @@
 		A0E4136F1E76302F00851E99 /* ThugLife */ = {
 			isa = PBXGroup;
 			children = (
+				A07DC4D51E8F9BC700F53E03 /* Paster */,
 				A0CFB8EE1E79271A00404ACC /* MediaPicker */,
 				A0CFB8EC1E7926FF00404ACC /* Common */,
 				A0CFB8EB1E7926EA00404ACC /* PhotoEdit */,
@@ -370,7 +393,10 @@
 				A0E7387E1E8D0BE3000447E6 /* GHHAddTicketViewController.m in Sources */,
 				A0CFB8DE1E767CCB00404ACC /* GHHGridViewController.m in Sources */,
 				A0CFB8D61E763C5C00404ACC /* GHHPhotoManager.m in Sources */,
+				A08061EC1E94965500BF2D71 /* UIImage+AddFunction.m in Sources */,
 				A0CFB8E71E77C80500404ACC /* GHHPhotoEditingViewController.m in Sources */,
+				A08061E81E94964E00BF2D71 /* XTPasterStageView.m in Sources */,
+				A08061E91E94964E00BF2D71 /* XTPasterView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
