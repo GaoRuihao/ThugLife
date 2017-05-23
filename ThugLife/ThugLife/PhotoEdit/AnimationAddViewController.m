@@ -8,6 +8,8 @@
 
 #import "AnimationAddViewController.h"
 #import <AssetsLibrary/AssetsLibrary.h>
+#import "XTPasterView.h"
+#import "UIView+Addition.h"
 
 
 @interface AnimationAddViewController () {
@@ -36,7 +38,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor whiteColor];
+//    self.view.backgroundColor = [UIColor whiteColor];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"完成" style:UIBarButtonItemStylePlain target:self action:@selector(rightBarItem:)];
     [self compressionSession];
 }
@@ -196,7 +198,6 @@
     animation.fromValue = [NSValue valueWithCGRect:CGRectMake(0, 0, size.width, size.height)];
     animation.toValue = [NSValue valueWithCGRect:CGRectMake(self.zoomCenter.x, self.zoomCenter.y, size.width * 3, size.height * 3)];
     animation.beginTime = self.choosedTime;
-    
     CABasicAnimation *animation1 = [CABasicAnimation animationWithKeyPath:@"opacity"];
     animation1.duration = 5;
     animation1.repeatCount = 0;
@@ -205,9 +206,25 @@
     animation1.fromValue = [NSNumber numberWithFloat:1.0];
     animation1.toValue = [NSNumber numberWithFloat:1.0];
     animation1.beginTime = self.choosedTime;
-    
     [overlayLayer1 addAnimation:animation forKey:@"animatebounds"];
     [overlayLayer1 addAnimation:animation1 forKey:@"animateOpacity"];
+    
+    XTPasterView *pasterView = self.ticketsArray.firstObject;
+    UIImage *ticketImage = pasterView.imagePaster;
+    CALayer *overlayer1 = [CALayer layer];
+    [overlayer1 setContents:(id)[ticketImage CGImage]];
+    overlayer1.frame = CGRectMake(0, pasterView.originY, pasterView.width, pasterView.height);
+    overlayer1.masksToBounds = YES;
+    
+    CABasicAnimation *ticketAnimation1 = [CABasicAnimation animationWithKeyPath:@"position"];
+    ticketAnimation1.duration = 5;
+    ticketAnimation1.repeatCount = 0;
+    ticketAnimation1.autoreverses = YES;
+    ticketAnimation1.fromValue = [NSValue valueWithCGPoint:CGPointMake(0, pasterView.originY)];
+    ticketAnimation1.toValue = [NSValue valueWithCGPoint:CGPointMake(pasterView.originX, pasterView.originY)];
+    ticketAnimation1.beginTime = self.choosedTime;
+    [overlayer1 addAnimation:ticketAnimation1 forKey:@"ticketPosition1"];
+    [overlayer1 addAnimation:animation1 forKey:@"animateOpacity"];
     
     // 5
     CALayer *parentLayer = [CALayer layer];
@@ -215,7 +232,8 @@
     parentLayer.frame = CGRectMake(0, 0, size.width, size.height);
     videoLayer.frame = CGRectMake(0, 0, size.width, size.height);
     [parentLayer addSublayer:videoLayer];
-    [parentLayer addSublayer:overlayLayer1];
+//    [parentLayer addSublayer:overlayLayer1];
+    [parentLayer addSublayer:overlayer1];
     
     composition.animationTool = [AVVideoCompositionCoreAnimationTool
                                  videoCompositionCoreAnimationToolWithPostProcessingAsVideoLayer:videoLayer inLayer:parentLayer];
@@ -261,8 +279,6 @@
     
     // 3.2 - Create an AVMutableVideoCompositionLayerInstruction for the video track and fix the orientation.
     AVMutableVideoCompositionLayerInstruction *videolayerInstruction = [AVMutableVideoCompositionLayerInstruction videoCompositionLayerInstructionWithAssetTrack:secondTrack];
-    
-    
     
     UIImageOrientation videoAssetOrientation_  = UIImageOrientationUp;
     BOOL isVideoAssetPortrait_  = NO;
@@ -329,6 +345,14 @@
 - (void)exportDidFinish:(AVAssetExportSession*)session {
     if (session.status == AVAssetExportSessionStatusCompleted) {
         NSURL *outputURL = session.outputURL;
+        
+        AVPlayer *player = [AVPlayer playerWithURL:outputURL];
+        AVPlayerViewController *playerVC = [[AVPlayerViewController alloc] init];
+        playerVC.player = player;
+        [self presentViewController:playerVC animated:YES completion:nil];
+        [playerVC.player play];
+        return;
+        
         ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
         if ([library videoAtPathIsCompatibleWithSavedPhotosAlbum:outputURL]) {
             [library writeVideoAtPathToSavedPhotosAlbum:outputURL completionBlock:^(NSURL *assetURL, NSError *error){

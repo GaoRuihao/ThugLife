@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface GHHAddTicketViewController : UIViewController
+@interface GHHAddTicketViewController : BaseViewController
 
 @property(nonatomic)NSTimeInterval choosedTime;
 @property(nonatomic, strong)AVURLAsset *avAsset;

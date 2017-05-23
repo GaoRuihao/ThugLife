@@ -17,5 +17,7 @@
 #ifdef __OBJC__
 
 #import <Photos/Photos.h>
+#import <AVKit/AVKit.h>
+#import "BaseViewController.h"
 
 #endif

@@ -36,7 +36,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor whiteColor];
+//    self.view.backgroundColor = [UIColor whiteColor];
     self.title = @"添加贴纸";
     self.edgesForExtendedLayout = UIRectEdgeNone;
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"下一步" style:UIBarButtonItemStylePlain target:self action:@selector(rightItemAction:)];
@@ -48,7 +48,7 @@
     imageScrollView.minimumZoomScale = 1.0;
     [self.view addSubview:imageScrollView];
     
-    self.pasterView = [[XTPasterStageView alloc] initWithFrame:imageScrollView.bounds];
+    self.pasterView = [[XTPasterStageView alloc] initWithFrame:CGRectMake(0, 0, 340, 340)];
     self.pasterView.originImage = self.editImage;
     [imageScrollView addSubview:self.pasterView];
     CGFloat xsize = imageScrollView.width / self.zoomScale;
@@ -87,6 +87,7 @@
     AnimationAddViewController *addVC = [[AnimationAddViewController alloc] initWithPoint:self.zoomCenter image:self.editImage];
     addVC.avAsset = self.avAsset;
     addVC.choosedTime = self.choosedTime;
+    addVC.ticketsArray = self.pasterView.m_listPaster;
     [self.navigationController pushViewController:addVC animated:YES];
 }
 

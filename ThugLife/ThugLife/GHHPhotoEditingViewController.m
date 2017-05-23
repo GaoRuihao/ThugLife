@@ -39,18 +39,32 @@
     [super viewDidLoad];
     
     self.edgesForExtendedLayout = UIRectEdgeNone;
-    self.view.backgroundColor = [UIColor whiteColor];
+//    self.view.backgroundColor = [UIColor whiteColor];
     self.manager = [[GHHPhotoManager alloc] init];
     self.avasset = [self.manager requestVideoWithAsset:self.asset];
     self.moviePlayer = [[MPMoviePlayerController alloc] initWithContentURL:self.avasset.URL];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(moviePlayerThumbnailImageRequestDidFinish:) name:MPMoviePlayerThumbnailImageRequestDidFinishNotification object:nil];
     
-//    self.generator = [[AVAssetImageGenerator alloc] initWithAsset:self.avasset];
-//    self.generator.appliesPreferredTrackTransform=TRUE;
-    
     self.imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 10, self.view.width, self.view.height - 184)];
     self.imageView.contentMode = UIViewContentModeScaleAspectFit;
     [self.view addSubview:self.imageView];
+    
+    self.generator = [[AVAssetImageGenerator alloc] initWithAsset:self.avasset];
+    self.generator.appliesPreferredTrackTransform=TRUE;
+    CMTime thumbTime = CMTimeMakeWithSeconds(0.0,30);
+    AVAssetImageGeneratorCompletionHandler handler =
+    ^(CMTime requestedTime, CGImageRef im, CMTime actualTime, AVAssetImageGeneratorResult result, NSError *error){
+        if (result != AVAssetImageGeneratorSucceeded) {
+            NSLog(@"error 失败");
+        }//没成功
+        
+        UIImage *thumbImg = [UIImage imageWithCGImage:im];
+        [self performSelectorOnMainThread:@selector(movieImage:) withObject:thumbImg waitUntilDone:YES];
+        
+    };
+    
+    [self.generator generateCGImagesAsynchronouslyForTimes:
+     [NSArray arrayWithObject:[NSValue valueWithCMTime:thumbTime]] completionHandler:handler];
     
     self.slider = [[UISlider alloc] initWithFrame:CGRectMake(20, self.view.height - 164, self.view.width - 40, 100)];
     [self.slider addTarget:self action:@selector(sliderValueChanged:) forControlEvents:UIControlEventValueChanged];
@@ -81,22 +95,6 @@
 
 - (void)sliderValueChanged:(UISlider *)sender {
     [self.moviePlayer requestThumbnailImagesAtTimes:@[@(sender.value)] timeOption:MPMovieTimeOptionExact];
-    
-//    CMTime thumbTime = CMTimeMakeWithSeconds(sender.value,30);
-//    NSLog(@"🐶🐶🐶 %f", sender.value);
-//    
-//    AVAssetImageGeneratorCompletionHandler handler =
-//    ^(CMTime requestedTime, CGImageRef im, CMTime actualTime, AVAssetImageGeneratorResult result, NSError *error){
-//        if (result != AVAssetImageGeneratorSucceeded) {       }//没成功
-//        
-//        UIImage *thumbImg = [UIImage imageWithCGImage:im];
-//        
-//        [self performSelectorOnMainThread:@selector(movieImage:) withObject:thumbImg waitUntilDone:YES];
-//        
-//    };
-//    
-//    [self.generator generateCGImagesAsynchronouslyForTimes:
-//     [NSArray arrayWithObject:[NSValue valueWithCMTime:thumbTime]] completionHandler:handler];
 }
 
 - (UIImage *)thumbnailImageAtTime:(NSTimeInterval)playbackTime

@@ -29,6 +29,7 @@
 		A0E4138B1E76302F00851E99 /* ThugLifeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A0E4138A1E76302F00851E99 /* ThugLifeTests.m */; };
 		A0E413961E76302F00851E99 /* ThugLifeUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = A0E413951E76302F00851E99 /* ThugLifeUITests.m */; };
 		A0E7387E1E8D0BE3000447E6 /* GHHAddTicketViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0E7387D1E8D0BE2000447E6 /* GHHAddTicketViewController.m */; };
+		A0FF7DCB1EA700FD005263B8 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0FF7DCA1EA700FD005263B8 /* BaseViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,6 +95,8 @@
 		A0E413971E76302F00851E99 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A0E7387C1E8D0BE2000447E6 /* GHHAddTicketViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GHHAddTicketViewController.h; path = PhotoEdit/GHHAddTicketViewController.h; sourceTree = "<group>"; };
 		A0E7387D1E8D0BE2000447E6 /* GHHAddTicketViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GHHAddTicketViewController.m; path = PhotoEdit/GHHAddTicketViewController.m; sourceTree = "<group>"; };
+		A0FF7DC91EA700FD005263B8 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
+		A0FF7DCA1EA700FD005263B8 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,10 +144,10 @@
 				A0CFB8E61E77C80500404ACC /* GHHPhotoEditingViewController.m */,
 				A0CFB8E81E7926E400404ACC /* GHHPhotoZoomViewController.h */,
 				A0CFB8E91E7926E400404ACC /* GHHPhotoZoomViewController.m */,
-				A03581441E811F2F00CF0432 /* AnimationAddViewController.h */,
-				A03581451E811F2F00CF0432 /* AnimationAddViewController.m */,
 				A0E7387C1E8D0BE2000447E6 /* GHHAddTicketViewController.h */,
 				A0E7387D1E8D0BE2000447E6 /* GHHAddTicketViewController.m */,
+				A03581441E811F2F00CF0432 /* AnimationAddViewController.h */,
+				A03581451E811F2F00CF0432 /* AnimationAddViewController.m */,
 			);
 			name = PhotoEdit;
 			sourceTree = "<group>";
@@ -156,6 +159,8 @@
 				A0CFB8D01E763C5200404ACC /* UIViewController+Addition.m */,
 				A0CFB8DF1E767E7800404ACC /* UIView+Addition.h */,
 				A0CFB8E01E767E7800404ACC /* UIView+Addition.m */,
+				A0FF7DC91EA700FD005263B8 /* BaseViewController.h */,
+				A0FF7DCA1EA700FD005263B8 /* BaseViewController.m */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -381,6 +386,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A0E413781E76302F00851E99 /* ViewController.m in Sources */,
+				A0FF7DCB1EA700FD005263B8 /* BaseViewController.m in Sources */,
 				A0CFB8D71E763C5C00404ACC /* GHHPhotoViewController.m in Sources */,
 				A0E413751E76302F00851E99 /* AppDelegate.m in Sources */,
 				A0CFB8D11E763C5200404ACC /* UIViewController+Addition.m in Sources */,

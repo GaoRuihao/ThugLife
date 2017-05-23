@@ -7,6 +7,7 @@
 //
 
 #import "UIViewController+Addition.h"
+#import <objc/runtime.h>
 
 @implementation UIViewController (Addition)
 

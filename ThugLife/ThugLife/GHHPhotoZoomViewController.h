@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface GHHPhotoZoomViewController : UIViewController
+@interface GHHPhotoZoomViewController : BaseViewController
 
 - (instancetype)initWithAsset:(AVURLAsset *)asset time:(NSTimeInterval)chosedTime;
 

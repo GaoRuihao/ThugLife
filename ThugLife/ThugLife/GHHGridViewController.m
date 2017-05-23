@@ -94,6 +94,17 @@ static NSString *cellID = @"collectionCell";
     }
 }
 
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    UITouch * touch = touches.anyObject;//获取触摸对象
+    NSLog(@"%@",@(touch.tapCount));//短时间内的点击次数
+}
+
+- (void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    UITouch * touch = touches.anyObject;//获取触摸对象
+    CGPoint point = [touch locationInView:self.view];
+    NSLog(@"touch point is %@  %@", point.x, point.y);
+}
 /*
 #pragma mark - Navigation
 

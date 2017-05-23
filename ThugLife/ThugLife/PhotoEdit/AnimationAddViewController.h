@@ -8,10 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AnimationAddViewController : UIViewController
+@interface AnimationAddViewController : BaseViewController
 
 @property(nonatomic)NSTimeInterval choosedTime;
 @property(nonatomic, strong)AVURLAsset *avAsset;
+@property(nonatomic, copy)NSMutableArray *ticketsArray;
 
 - (instancetype)initWithPoint:(CGPoint)zoomCenter image:(UIImage *)image;
 

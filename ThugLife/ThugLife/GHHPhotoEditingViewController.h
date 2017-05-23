@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface GHHPhotoEditingViewController : UIViewController
+@interface GHHPhotoEditingViewController : BaseViewController
 
 - (instancetype)initWithAsset:(PHAsset *)asset;
 

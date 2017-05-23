@@ -16,13 +16,13 @@
 {
     CGPoint         startPoint ;
     CGPoint         touchPoint ;
-    NSMutableArray  *m_listPaster ;
 }
 
 @property (nonatomic,strong) UIButton       *bgButton ;
 @property (nonatomic,strong) UIImageView    *imgView ;
 @property (nonatomic,strong) XTPasterView   *pasterCurrent ;
 @property (nonatomic)        int            newPasterID ;
+@property (nonatomic, strong)NSMutableArray  *m_listPaster;
 
 @end
 
@@ -87,7 +87,7 @@
     self = [super initWithFrame:frame];
     if (self)
     {
-        m_listPaster = [[NSMutableArray alloc] initWithCapacity:1] ;
+        self.m_listPaster = [[NSMutableArray alloc] initWithCapacity:1] ;
         [self imgView] ;
         [self bgButton] ;
     }
@@ -103,7 +103,7 @@
                                                      pasterID:self.newPasterID
                                                           img:imgP] ;
     _pasterCurrent.delegate = self ;
-    [m_listPaster addObject:_pasterCurrent] ;
+    [self.m_listPaster addObject:_pasterCurrent] ;
 }
 
 - (UIImage *)doneEdit
@@ -135,13 +135,16 @@
     NSLog(@"back clicked") ;
     
     [self clearAllOnFirst] ;
+    if ([self.superview isKindOfClass:[UIScrollView class]]) {
+        ((UIScrollView *)self.superview).scrollEnabled = YES;
+    }
 }
 
 - (void)clearAllOnFirst
 {
     _pasterCurrent.isOnFirst = NO ;
     
-    [m_listPaster enumerateObjectsUsingBlock:^(XTPasterView *pasterV, NSUInteger idx, BOOL * _Nonnull stop) {
+    [self.m_listPaster enumerateObjectsUsingBlock:^(XTPasterView *pasterV, NSUInteger idx, BOOL * _Nonnull stop) {
          pasterV.isOnFirst = NO ;
     }] ;
 }
@@ -149,7 +152,7 @@
 #pragma mark - PasterViewDelegate
 - (void)makePasterBecomeFirstRespond:(int)pasterID ;
 {
-    [m_listPaster enumerateObjectsUsingBlock:^(XTPasterView *pasterV, NSUInteger idx, BOOL * _Nonnull stop) {
+    [self.m_listPaster enumerateObjectsUsingBlock:^(XTPasterView *pasterV, NSUInteger idx, BOOL * _Nonnull stop) {
         
         pasterV.isOnFirst = NO ;
 
@@ -160,14 +163,17 @@
         }
         
     }] ;
+    if ([self.superview isKindOfClass:[UIScrollView class]]) {
+        ((UIScrollView *)self.superview).scrollEnabled = NO;
+    }
 }
 
 - (void)removePaster:(int)pasterID
 {
-    [m_listPaster enumerateObjectsUsingBlock:^(XTPasterView *pasterV, NSUInteger idx, BOOL * _Nonnull stop) {
+    [self.m_listPaster enumerateObjectsUsingBlock:^(XTPasterView *pasterV, NSUInteger idx, BOOL * _Nonnull stop) {
         if (pasterV.pasterID == pasterID)
         {
-            [m_listPaster removeObjectAtIndex:idx] ;
+            [self.m_listPaster removeObjectAtIndex:idx] ;
             *stop = YES ;
         }
     }] ;
