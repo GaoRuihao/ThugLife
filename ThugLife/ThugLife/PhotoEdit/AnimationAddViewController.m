@@ -11,7 +11,6 @@
 #import "XTPasterView.h"
 #import "UIView+Addition.h"
 
-
 @interface AnimationAddViewController () {
     AVMutableComposition *mixComposition;
 }
@@ -22,6 +21,7 @@
 @property(nonatomic, strong)NSString  *theVideoPath;
 @property(nonatomic, strong)AVAsset *videoAsset;
 @property(nonatomic, strong)AVMutableComposition *mutableComposition;
+@property(nonatomic, strong)NSTimer *timer;
 
 @end
 
@@ -46,6 +46,15 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [self.timer invalidate];
+}
+
+- (void)dealloc {
+    self.timer = nil;
 }
 
 - (void)rightBarItem:(UIBarButtonItem *)sender {
@@ -232,7 +241,7 @@
     parentLayer.frame = CGRectMake(0, 0, size.width, size.height);
     videoLayer.frame = CGRectMake(0, 0, size.width, size.height);
     [parentLayer addSublayer:videoLayer];
-//    [parentLayer addSublayer:overlayLayer1];
+    [parentLayer addSublayer:overlayLayer1];
     [parentLayer addSublayer:overlayer1];
     
     composition.animationTool = [AVVideoCompositionCoreAnimationTool
@@ -255,6 +264,14 @@
     // 2 - Create AVMutableComposition object. This object will hold your AVMutableCompositionTrack instances.
     mixComposition = [[AVMutableComposition alloc] init];
     
+    //音频通道
+    AVAssetTrack *firstAssetAudio = [[self.avAsset tracksWithMediaType:AVMediaTypeAudio] objectAtIndex:0];
+    AVMutableAudioMix *audioMix = [AVMutableAudioMix audioMix];
+    AVMutableAudioMixInputParameters *trackMix = [AVMutableAudioMixInputParameters audioMixInputParametersWithTrack:firstAssetAudio];
+    [trackMix setVolumeRampFromStartVolume:0.5 toEndVolume:0.5 timeRange:CMTimeRangeMake(kCMTimeZero, trimmedDuration)];
+    audioMix.inputParameters = @[trackMix];
+
+    
     AVAssetTrack *firstAssetTrack = [[self.avAsset tracksWithMediaType:AVMediaTypeVideo] objectAtIndex:0];
     AVAssetTrack *videoAssetTrack = [[self.videoAsset tracksWithMediaType:AVMediaTypeVideo] objectAtIndex:0];
     // 3 - Video track
@@ -264,6 +281,8 @@
     [firstTrack insertTimeRange:CMTimeRangeMake(kCMTimeZero, trimmedDuration)
                         ofTrack:[[self.avAsset tracksWithMediaType:AVMediaTypeVideo] objectAtIndex:0]
                          atTime:kCMTimeZero error:nil];
+    
+    
     AVMutableCompositionTrack *secondTrack = [mixComposition addMutableTrackWithMediaType:AVMediaTypeVideo preferredTrackID:kCMPersistentTrackID_Invalid];
     //第二段视频
     [secondTrack insertTimeRange:CMTimeRangeMake(kCMTimeZero, self.videoAsset.duration)
@@ -279,6 +298,8 @@
     
     // 3.2 - Create an AVMutableVideoCompositionLayerInstruction for the video track and fix the orientation.
     AVMutableVideoCompositionLayerInstruction *videolayerInstruction = [AVMutableVideoCompositionLayerInstruction videoCompositionLayerInstructionWithAssetTrack:secondTrack];
+    
+//    [firstlayerInstruction setTransform:CGAffineTransformMakeRotation(M_PI_2) atTime:kCMTimeZero];
     
     UIImageOrientation videoAssetOrientation_  = UIImageOrientationUp;
     BOOL isVideoAssetPortrait_  = NO;
@@ -297,7 +318,7 @@
     if (videoTransform.a == -1.0 && videoTransform.b == 0 && videoTransform.c == 0 && videoTransform.d == -1.0) {
         videoAssetOrientation_ = UIImageOrientationDown;
     }
-    [videolayerInstruction setTransform:videoAssetTrack.preferredTransform atTime:kCMTimeZero];
+    [videolayerInstruction setTransform:CGAffineTransformMakeRotation(M_PI_2) atTime:kCMTimeZero];
     [videolayerInstruction setOpacity:0.0 atTime:trimmedDuration];
     
     // 3.3 - Add instructions
@@ -334,12 +355,15 @@
     exporter.outputURL=url;
     exporter.outputFileType = AVFileTypeQuickTimeMovie;
     exporter.shouldOptimizeForNetworkUse = YES;
+    exporter.audioMix = audioMix;
     exporter.videoComposition = mainCompositionInst;
     [exporter exportAsynchronouslyWithCompletionHandler:^{
         dispatch_async(dispatch_get_main_queue(), ^{
             [self exportDidFinish:exporter];
         });
     }];
+    
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(exporterProgress:) userInfo:exporter repeats:YES];
 }
 
 - (void)exportDidFinish:(AVAssetExportSession*)session {
@@ -369,6 +393,14 @@
                 });
             }];
         }
+    }
+}
+
+- (void)exporterProgress:(NSTimer *) timer {
+    AVAssetExportSession *exporter = timer.userInfo;
+    NSLog(@"progress is :    %f", exporter.progress);
+    if (exporter.progress >= 1.0) {
+        [timer invalidate];
     }
 }
 

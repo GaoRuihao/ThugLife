@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		77F163AB1A29E361D721FDF3 /* libPods-ThugLife.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 40CF936A3EDE353CC5CEBE47 /* libPods-ThugLife.a */; };
 		A03581461E811F2F00CF0432 /* AnimationAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A03581451E811F2F00CF0432 /* AnimationAddViewController.m */; };
 		A08061E81E94964E00BF2D71 /* XTPasterStageView.m in Sources */ = {isa = PBXBuildFile; fileRef = A08061E51E94964E00BF2D71 /* XTPasterStageView.m */; };
 		A08061E91E94964E00BF2D71 /* XTPasterView.m in Sources */ = {isa = PBXBuildFile; fileRef = A08061E71E94964E00BF2D71 /* XTPasterView.m */; };
@@ -20,6 +21,9 @@
 		A0CFB8E41E76990400404ACC /* GHHGridCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A0CFB8E31E76990400404ACC /* GHHGridCell.m */; };
 		A0CFB8E71E77C80500404ACC /* GHHPhotoEditingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0CFB8E61E77C80500404ACC /* GHHPhotoEditingViewController.m */; };
 		A0CFB8EA1E7926E400404ACC /* GHHPhotoZoomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0CFB8E91E7926E400404ACC /* GHHPhotoZoomViewController.m */; };
+		A0E047BF1ED7FFB000821AFE /* ICGRulerView.m in Sources */ = {isa = PBXBuildFile; fileRef = A0E047B91ED7FFB000821AFE /* ICGRulerView.m */; };
+		A0E047C01ED7FFB000821AFE /* ICGThumbView.m in Sources */ = {isa = PBXBuildFile; fileRef = A0E047BB1ED7FFB000821AFE /* ICGThumbView.m */; };
+		A0E047C11ED7FFB000821AFE /* ICGVideoTrimmerView.m in Sources */ = {isa = PBXBuildFile; fileRef = A0E047BE1ED7FFB000821AFE /* ICGVideoTrimmerView.m */; };
 		A0E413721E76302F00851E99 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A0E413711E76302F00851E99 /* main.m */; };
 		A0E413751E76302F00851E99 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A0E413741E76302F00851E99 /* AppDelegate.m */; };
 		A0E413781E76302F00851E99 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0E413771E76302F00851E99 /* ViewController.m */; };
@@ -50,6 +54,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		40CF936A3EDE353CC5CEBE47 /* libPods-ThugLife.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ThugLife.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7BC4E3CB29ACD2C226A8C0B0 /* Pods-ThugLife.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ThugLife.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ThugLife/Pods-ThugLife.debug.xcconfig"; sourceTree = "<group>"; };
 		A03581441E811F2F00CF0432 /* AnimationAddViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AnimationAddViewController.h; path = PhotoEdit/AnimationAddViewController.h; sourceTree = "<group>"; };
 		A03581451E811F2F00CF0432 /* AnimationAddViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AnimationAddViewController.m; path = PhotoEdit/AnimationAddViewController.m; sourceTree = "<group>"; };
 		A08061E41E94964E00BF2D71 /* XTPasterStageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XTPasterStageView.h; sourceTree = "<group>"; };
@@ -77,6 +83,13 @@
 		A0CFB8E61E77C80500404ACC /* GHHPhotoEditingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHHPhotoEditingViewController.m; sourceTree = "<group>"; };
 		A0CFB8E81E7926E400404ACC /* GHHPhotoZoomViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHHPhotoZoomViewController.h; sourceTree = "<group>"; };
 		A0CFB8E91E7926E400404ACC /* GHHPhotoZoomViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHHPhotoZoomViewController.m; sourceTree = "<group>"; };
+		A0E047B81ED7FFB000821AFE /* ICGRulerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICGRulerView.h; sourceTree = "<group>"; };
+		A0E047B91ED7FFB000821AFE /* ICGRulerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICGRulerView.m; sourceTree = "<group>"; };
+		A0E047BA1ED7FFB000821AFE /* ICGThumbView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICGThumbView.h; sourceTree = "<group>"; };
+		A0E047BB1ED7FFB000821AFE /* ICGThumbView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICGThumbView.m; sourceTree = "<group>"; };
+		A0E047BC1ED7FFB000821AFE /* ICGVideoTrimmer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICGVideoTrimmer.h; sourceTree = "<group>"; };
+		A0E047BD1ED7FFB000821AFE /* ICGVideoTrimmerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICGVideoTrimmerView.h; sourceTree = "<group>"; };
+		A0E047BE1ED7FFB000821AFE /* ICGVideoTrimmerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICGVideoTrimmerView.m; sourceTree = "<group>"; };
 		A0E4136D1E76302F00851E99 /* ThugLife.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ThugLife.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0E413711E76302F00851E99 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A0E413731E76302F00851E99 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -97,6 +110,7 @@
 		A0E7387D1E8D0BE2000447E6 /* GHHAddTicketViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GHHAddTicketViewController.m; path = PhotoEdit/GHHAddTicketViewController.m; sourceTree = "<group>"; };
 		A0FF7DC91EA700FD005263B8 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
 		A0FF7DCA1EA700FD005263B8 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
+		EB04F15EE503629607763456 /* Pods-ThugLife.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ThugLife.release.xcconfig"; path = "Pods/Target Support Files/Pods-ThugLife/Pods-ThugLife.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +118,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				77F163AB1A29E361D721FDF3 /* libPods-ThugLife.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -124,6 +139,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		83A3296307D0993C3498B9D6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				40CF936A3EDE353CC5CEBE47 /* libPods-ThugLife.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		A07DC4D51E8F9BC700F53E03 /* Paster */ = {
 			isa = PBXGroup;
 			children = (
@@ -180,6 +203,20 @@
 			name = MediaPicker;
 			sourceTree = "<group>";
 		};
+		A0E047B71ED7FFB000821AFE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A0E047B81ED7FFB000821AFE /* ICGRulerView.h */,
+				A0E047B91ED7FFB000821AFE /* ICGRulerView.m */,
+				A0E047BA1ED7FFB000821AFE /* ICGThumbView.h */,
+				A0E047BB1ED7FFB000821AFE /* ICGThumbView.m */,
+				A0E047BC1ED7FFB000821AFE /* ICGVideoTrimmer.h */,
+				A0E047BD1ED7FFB000821AFE /* ICGVideoTrimmerView.h */,
+				A0E047BE1ED7FFB000821AFE /* ICGVideoTrimmerView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		A0E413641E76302E00851E99 = {
 			isa = PBXGroup;
 			children = (
@@ -187,6 +224,8 @@
 				A0E413891E76302F00851E99 /* ThugLifeTests */,
 				A0E413941E76302F00851E99 /* ThugLifeUITests */,
 				A0E4136E1E76302F00851E99 /* Products */,
+				E74C6F9ABFF949DD92B6A910 /* Pods */,
+				83A3296307D0993C3498B9D6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -203,6 +242,7 @@
 		A0E4136F1E76302F00851E99 /* ThugLife */ = {
 			isa = PBXGroup;
 			children = (
+				A0E047B71ED7FFB000821AFE /* View */,
 				A07DC4D51E8F9BC700F53E03 /* Paster */,
 				A0CFB8EE1E79271A00404ACC /* MediaPicker */,
 				A0CFB8EC1E7926FF00404ACC /* Common */,
@@ -249,6 +289,15 @@
 			path = ThugLifeUITests;
 			sourceTree = "<group>";
 		};
+		E74C6F9ABFF949DD92B6A910 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7BC4E3CB29ACD2C226A8C0B0 /* Pods-ThugLife.debug.xcconfig */,
+				EB04F15EE503629607763456 /* Pods-ThugLife.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -256,9 +305,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A0E4139A1E76302F00851E99 /* Build configuration list for PBXNativeTarget "ThugLife" */;
 			buildPhases = (
+				4020E100E4AF3BC537AE194A /* [CP] Check Pods Manifest.lock */,
 				A0E413691E76302F00851E99 /* Sources */,
 				A0E4136A1E76302F00851E99 /* Frameworks */,
 				A0E4136B1E76302F00851E99 /* Resources */,
+				A432FA82B6DD76D548F66955 /* [CP] Embed Pods Frameworks */,
+				0A820E86CD90D77F2195ACFB /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -380,6 +432,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0A820E86CD90D77F2195ACFB /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ThugLife/Pods-ThugLife-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4020E100E4AF3BC537AE194A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		A432FA82B6DD76D548F66955 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ThugLife/Pods-ThugLife-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		A0E413691E76302F00851E99 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -396,12 +496,15 @@
 				A0CFB8E11E767E7800404ACC /* UIView+Addition.m in Sources */,
 				A0E413721E76302F00851E99 /* main.m in Sources */,
 				A0CFB8EA1E7926E400404ACC /* GHHPhotoZoomViewController.m in Sources */,
+				A0E047C11ED7FFB000821AFE /* ICGVideoTrimmerView.m in Sources */,
 				A0E7387E1E8D0BE3000447E6 /* GHHAddTicketViewController.m in Sources */,
 				A0CFB8DE1E767CCB00404ACC /* GHHGridViewController.m in Sources */,
 				A0CFB8D61E763C5C00404ACC /* GHHPhotoManager.m in Sources */,
 				A08061EC1E94965500BF2D71 /* UIImage+AddFunction.m in Sources */,
+				A0E047C01ED7FFB000821AFE /* ICGThumbView.m in Sources */,
 				A0CFB8E71E77C80500404ACC /* GHHPhotoEditingViewController.m in Sources */,
 				A08061E81E94964E00BF2D71 /* XTPasterStageView.m in Sources */,
+				A0E047BF1ED7FFB000821AFE /* ICGRulerView.m in Sources */,
 				A08061E91E94964E00BF2D71 /* XTPasterView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -549,6 +652,7 @@
 		};
 		A0E4139B1E76302F00851E99 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7BC4E3CB29ACD2C226A8C0B0 /* Pods-ThugLife.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 26676U96B8;
@@ -564,6 +668,7 @@
 		};
 		A0E4139C1E76302F00851E99 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EB04F15EE503629607763456 /* Pods-ThugLife.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 26676U96B8;

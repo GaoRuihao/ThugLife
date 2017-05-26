@@ -11,6 +11,7 @@
 #import "GHHPhotoManager.h"
 #import <MediaPlayer/MediaPlayer.h>
 #import "GHHPhotoZoomViewController.h"
+#import "ICGVideoTrimmerView.h"
 
 @interface GHHPhotoEditingViewController ()
 
@@ -22,6 +23,7 @@
 @property(nonatomic, strong)UIImageView *imageView;
 @property(nonatomic, strong)MPMoviePlayerController *moviePlayer;
 @property(nonatomic, strong)UISlider *slider;
+@property(nonatomic, strong)ICGVideoTrimmerView *trimmerView;
 
 @end
 
@@ -39,10 +41,10 @@
     [super viewDidLoad];
     
     self.edgesForExtendedLayout = UIRectEdgeNone;
-//    self.view.backgroundColor = [UIColor whiteColor];
     self.manager = [[GHHPhotoManager alloc] init];
     self.avasset = [self.manager requestVideoWithAsset:self.asset];
     self.moviePlayer = [[MPMoviePlayerController alloc] initWithContentURL:self.avasset.URL];
+    self.moviePlayer.shouldAutoplay = NO;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(moviePlayerThumbnailImageRequestDidFinish:) name:MPMoviePlayerThumbnailImageRequestDidFinishNotification object:nil];
     
     self.imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 10, self.view.width, self.view.height - 184)];
@@ -62,18 +64,35 @@
         [self performSelectorOnMainThread:@selector(movieImage:) withObject:thumbImg waitUntilDone:YES];
         
     };
-    
     [self.generator generateCGImagesAsynchronouslyForTimes:
-     [NSArray arrayWithObject:[NSValue valueWithCMTime:thumbTime]] completionHandler:handler];
+     [NSArray arrayWithObject:[NSValue valueWithCMTime:thumbTime]]  completionHandler:handler];
     
-    self.slider = [[UISlider alloc] initWithFrame:CGRectMake(20, self.view.height - 164, self.view.width - 40, 100)];
-    [self.slider addTarget:self action:@selector(sliderValueChanged:) forControlEvents:UIControlEventValueChanged];
-    self.slider.maximumValue = self.asset.duration;
-    self.slider.minimumValue = 0.0;
-    [self.view addSubview:self.slider];
+    self.trimmerView = [[ICGVideoTrimmerView alloc] initWithFrame:CGRectMake(20, self.view.height - 164, self.view.width - 40, 60) asset:self.avasset];
+    // set properties for trimmer view
+    [self.trimmerView setThemeColor:[UIColor whiteColor]];
+    [self.trimmerView setTrackerColor:[UIColor cyanColor]];
+    [self.trimmerView setDelegate:self];
+    
+    // important: reset subviews
+    [self.trimmerView resetSubviews];
+    [self.view addSubview:self.trimmerView];
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"下一步" style:UIBarButtonItemStylePlain target:self action:@selector(rightBarItemAction:)];
-    
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    // 禁用返回手势
+    if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
+        self.navigationController.interactivePopGestureRecognizer.enabled = NO;
+    }
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
+        self.navigationController.interactivePopGestureRecognizer.enabled = YES;
+    }
 }
 
 #pragma mark - Norification
@@ -106,6 +125,8 @@
 }
 
 - (void)movieImage:(UIImage *)image {
+    
+    
     self.imageView.image = image;
 }
 

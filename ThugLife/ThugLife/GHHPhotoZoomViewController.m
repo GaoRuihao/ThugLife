@@ -54,7 +54,7 @@
     self.imageView.contentMode = UIViewContentModeScaleAspectFit;
     [self.scrollView addSubview:self.imageView];
     self.generator = [[AVAssetImageGenerator alloc] initWithAsset:self.avAsset];
-//    self.generator.appliesPreferredTrackTransform = TRUE;
+    self.generator.appliesPreferredTrackTransform = YES;
     self.generator.requestedTimeToleranceBefore = kCMTimeZero;
     self.generator.requestedTimeToleranceAfter = kCMTimeZero;
     CGImageRef imageRef = [self.generator copyCGImageAtTime:CMTimeMake(self.chosedTime * 600, 600) actualTime:nil error:nil];
